@@ -7,7 +7,7 @@ import Field from './ex/field'
 
 //reducers são funções puras sem efeito colateral 
 const reducers = combineReducers({
-    field: () => ({ value: 'Opa' })
+    field: () => ({ value: 'Opa2' })
 })
 
 ReactDOM.render(

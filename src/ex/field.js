@@ -1,24 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 
 class Field extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { value : props.initialValue }
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value })
-    }
-
     render() {
         return (
             <div>
-                <label>{this.state.value}</label><br />
-                <input onChange={this.handleChange} />
+                <label>{this.props.value}</label><br />
+                <input onChange={this.handleChange} value={this.props.value} />
             </div>
         )
     } 
 }
 
-export default Field 
+//mapeando o state para as props dos componentes 
+//controlando o state atraves do props
+//cria-se forada classe para que não haja dependencia do redux no componente
+function mapStateToProps(state) {
+    return {
+        value: state.field.value
+    }
+}
+
+export default connect(mapStateToProps) (Field)
+//Padrao de Projeto conhecido decoration
+//está passando um componente retornando o mesmo componente
+//agora com o state mapeado pro valores do state global
+// da aplicaçao
