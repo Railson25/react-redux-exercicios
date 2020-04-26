@@ -6,8 +6,10 @@ export default function(state = INITIAL_STATE, action) {
             return { ...state, number: state.number + state.step }
         case 'DEC':
             return { ...state, number: state.number - state.step }
-        case 'STEP_CHANGED' :  
-            return { ...state, step: action.payload}  
+        case 'STEP_CHANGED' : 
+            //o sinal + antes da action é para tranformar em numero
+            //e nao concantenar os 2 numeros   
+            return { ...state, step: +action.payload}  
         default:
             return state      
     }
